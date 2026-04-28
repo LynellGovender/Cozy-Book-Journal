@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Cozy Reading Journal</title>
+  <link rel="stylesheet" href="style.css">
+  <link rel="icon" href="data:,">
+</head>
+<body>
+
+<!-- ─── AUTH SCREEN ──────────────────────────────────────────────────────── -->
+<div id="authScreen" class="auth-screen">
+  <div class="auth-box">
+    <h1>📖 Cozy Book Journal</h1>
+
+    <div class="auth-tabs">
+      <button id="loginTabBtn" class="auth-tab active" onclick="switchAuthTab('login')">Login</button>
+      <button id="registerTabBtn" class="auth-tab" onclick="switchAuthTab('register')">Register</button>
+    </div>
+
+    <!-- Login -->
+    <div id="loginForm">
+      <input id="loginUsername" placeholder="Username" autocomplete="username">
+      <input id="loginPassword" placeholder="Password" type="password" autocomplete="current-password">
+      <div id="loginError" class="auth-error"></div>
+      <button onclick="login()">Login</button>
+    </div>
+
+    <!-- Register -->
+    <div id="registerForm" style="display:none;">
+      <input id="regUsername" placeholder="Username" autocomplete="username">
+      <input id="regEmail" placeholder="Email (optional)" type="email">
+      <input id="regPassword" placeholder="Password (min 6 chars)" type="password" autocomplete="new-password">
+      <div id="registerError" class="auth-error"></div>
+      <button onclick="register()">Create Account</button>
+    </div>
+  </div>
+</div>
+
+<!-- ─── MAIN APP ──────────────────────────────────────────────────────────── -->
+<div id="appScreen" style="display:none;">
+
+  <div class="app">
+
+    <div class="header">
+      <h1>Cozy Book Journal</h1>
+      <div class="user-bar">
+        <span id="usernameLabel"></span>
+        <button class="logout-btn" onclick="logout()">Logout</button>
+      </div>
+    </div>
+
+    <div class="tabs">
+      <button data-tab="add" class="active">Add</button>
+      <button data-tab="tbr">TBR</button>
+      <button data-tab="reading">Reading</button>
+      <button data-tab="finished">Finished</button>
+      <button data-tab="stats">Stats</button>
+    </div>
+
+    <div class="notebook">
+      <div class="spiral"></div>
+
+      <div class="page-container">
+
+        <!-- ADD -->
+        <div id="add" class="page active">
+          <div class="content">
+            <h2>Add Book</h2>
+            <label for="title">Book Title</label>
+            <input id="title" placeholder="Book Title">
+            <label for="author">Author</label>
+            <input id="author" placeholder="Author">
+            <label for="notes">Notes</label>
+            <textarea id="notes" placeholder="Thoughts..."></textarea>
+            <label for="status">Status</label>
+            <select id="status">
+              <option value="TBR">TBR</option>
+              <option value="Reading">Reading</option>
+              <option value="Finished">Finished</option>
+            </select>
+            <label for="rating">Rating</label>
+            <select id="rating">
+              <option value="0">0 ⭐</option>
+              <option value="1">1 ⭐</option>
+              <option value="2">2 ⭐</option>
+              <option value="3">3 ⭐</option>
+              <option value="4">4 ⭐</option>
+              <option value="5">5 ⭐</option>
+            </select>
+            <label for="cover">Cover image filename</label>
+            <input id="cover" placeholder="e.g. book1.jpg">
+            <div id="addError" class="auth-error"></div>
+            <button id="addBtn" onclick="addBook()">Add Book</button>
+          </div>
+        </div>
+
+        <!-- TBR -->
+        <div id="tbr" class="page">
+          <div class="content">
+            <h2>📚 To Be Read</h2>
+            <div id="tbrList"><p class="empty">No books yet!</p></div>
+          </div>
+        </div>
+
+        <!-- READING -->
+        <div id="reading" class="page">
+          <div class="content">
+            <h2>📖 Currently Reading</h2>
+            <div id="readingList"><p class="empty">No books yet!</p></div>
+          </div>
+        </div>
+
+        <!-- FINISHED -->
+        <div id="finished" class="page">
+          <div class="content">
+            <h2>✅ Finished</h2>
+            <div id="finishedList"><p class="empty">No books yet!</p></div>
+          </div>
+        </div>
+
+        <!-- STATS -->
+        <div id="stats" class="page">
+          <div class="content">
+            <h2>📊 Stats</h2>
+            <div id="statsBox"><p class="empty">Loading stats...</p></div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </div>
+
+</div>
+
+<script src="script.js"></script>
+</body>
+</html>

@@ -1,0 +1,325 @@
+/* ─── BASE ──────────────────────────────────────────────────────────────────── */
+*, *::before, *::after { box-sizing: border-box; }
+
+body {
+  margin: 0;
+  padding: 0;
+  font-family: 'Segoe UI', sans-serif;
+  background: #ffd2d2;
+  background-image: url('images/books-bg.jpg');
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+  min-height: 100vh;
+}
+
+/* ─── AUTH SCREEN ───────────────────────────────────────────────────────────── */
+.auth-screen {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 100vh;
+}
+
+.auth-box {
+  background: rgba(255, 255, 255, 0.92);
+  border-radius: 20px;
+  padding: 36px 32px;
+  width: 360px;
+  box-shadow: 0 15px 40px rgba(0,0,0,0.2);
+  text-align: center;
+}
+
+.auth-box h1 {
+  color: #ac3f88;
+  margin: 0 0 20px;
+  font-size: 22px;
+}
+
+.auth-tabs {
+  display: flex;
+  gap: 8px;
+  margin-bottom: 20px;
+}
+
+.auth-tab {
+  flex: 1;
+  background: #f8bbd0;
+  color: #333;
+}
+
+.auth-tab.active {
+  background: #ec407a;
+  color: white;
+}
+
+.auth-error {
+  color: #c0392b;
+  font-size: 13px;
+  margin: 4px 0 8px;
+  min-height: 18px;
+}
+
+/* ─── APP LAYOUT ────────────────────────────────────────────────────────────── */
+.app {
+  display: flex;
+  flex-wrap: wrap;
+  padding: 10px;
+}
+
+/* ─── HEADER ────────────────────────────────────────────────────────────────── */
+.header {
+  text-align: center;
+  margin: 20px 0 0;
+  color: #ac3f88;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 20px;
+  flex-wrap: wrap;
+}
+
+.header h1 {
+  margin: 0;
+}
+
+.user-bar {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  font-size: 14px;
+  color: #ac3f88;
+}
+
+.logout-btn {
+  background: transparent;
+  border: 1px solid #ec407a;
+  color: #ec407a;
+  padding: 4px 12px;
+  font-size: 13px;
+  margin: 0;
+}
+
+.logout-btn:hover {
+  background: #ec407a;
+  color: white;
+}
+
+/* ─── TABS ───────────────────────────────────────────────────────────────────── */
+.tabs {
+  display: flex;
+  flex-direction: column;
+  padding: 20px 10px;
+  gap: 10px;
+}
+
+.tabs button {
+  background: #f8bbd0;
+  border: none;
+  padding: 10px;
+  border-radius: 10px;
+  cursor: pointer;
+  transition: 0.3s;
+  color: #333;
+}
+
+.tabs button.active {
+  background: #ec407a;
+  color: white;
+}
+
+.tabs button:hover {
+  background: #f48fb1;
+}
+
+/* ─── NOTEBOOK ───────────────────────────────────────────────────────────────── */
+.notebook {
+  position: relative;
+  margin: auto;
+  margin-top: 20px;
+}
+
+/* ─── SPIRAL ─────────────────────────────────────────────────────────────────── */
+.spiral {
+  position: absolute;
+  left: -25px;
+  top: 0;
+  bottom: 0;
+  width: 20px;
+  background: repeating-linear-gradient(
+    #ccc, #ccc 10px, transparent 10px, transparent 20px
+  );
+}
+
+/* ─── PAGE CONTAINER ─────────────────────────────────────────────────────────── */
+.page-container {
+  width: 750px;
+  height: 85vh;
+  position: relative;
+}
+
+/* ─── PAGE ───────────────────────────────────────────────────────────────────── */
+.page {
+  display: none;
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  border-radius: 20px;
+  background-size: cover;
+  background-position: center;
+  box-shadow: 0 15px 40px rgba(0,0,0,0.2);
+}
+
+.page.active { display: block; }
+
+/* ─── CONTENT ────────────────────────────────────────────────────────────────── */
+.content {
+  background: rgba(233, 244, 255, 0.9);
+  margin: 30px;
+  padding: 20px;
+  border-radius: 15px;
+  height: calc(100% - 60px);
+  overflow-y: auto;
+}
+
+/* ─── LABELS ─────────────────────────────────────────────────────────────────── */
+label {
+  display: block;
+  font-size: 13px;
+  color: #555;
+  margin: 10px 0 2px;
+}
+
+/* ─── INPUTS ─────────────────────────────────────────────────────────────────── */
+input, textarea, select {
+  width: 100%;
+  margin: 0 0 4px;
+  padding: 8px;
+  border-radius: 10px;
+  border: 1px solid #f8bbd0;
+  font-size: 14px;
+  font-family: inherit;
+}
+
+textarea { min-height: 80px; resize: vertical; }
+
+/* ─── BUTTONS ────────────────────────────────────────────────────────────────── */
+button {
+  background: #f48fb1;
+  border: none;
+  padding: 10px;
+  border-radius: 10px;
+  color: white;
+  cursor: pointer;
+  margin-top: 5px;
+  transition: 0.3s;
+  font-family: inherit;
+}
+
+button:hover  { background: #ec407a; }
+button:disabled { opacity: 0.6; cursor: not-allowed; }
+
+/* ─── BOOK CARD ──────────────────────────────────────────────────────────────── */
+.book {
+  display: flex;
+  gap: 10px;
+  align-items: flex-start;
+  background: white;
+  border: 2px solid #f8bbd0;
+  border-radius: 10px;
+  padding: 10px;
+  margin: 10px 0;
+}
+
+.book img {
+  width: 80px;
+  height: 120px;
+  object-fit: cover;
+  border-radius: 8px;
+  flex-shrink: 0;
+}
+
+.no-cover {
+  width: 80px;
+  height: 120px;
+  border-radius: 8px;
+  background: #fce4ec;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 32px;
+  flex-shrink: 0;
+}
+
+.book-info { flex: 1; }
+
+.book h3 { margin: 0 0 4px; font-size: 15px; }
+.book p  { margin: 3px 0; font-size: 13px; color: #555; }
+
+.rating { color: gold; font-size: 14px; }
+
+.book-actions {
+  display: flex;
+  gap: 8px;
+  align-items: center;
+  margin-top: 8px;
+  flex-wrap: wrap;
+}
+
+.book-actions select {
+  width: auto;
+  margin: 0;
+  font-size: 13px;
+  padding: 4px 8px;
+}
+
+.delete-btn {
+  background: #fce4ec;
+  color: #c0392b;
+  border: 1px solid #f8bbd0;
+  padding: 4px 10px;
+  font-size: 12px;
+  margin: 0;
+}
+
+.delete-btn:hover { background: #e74c3c; color: white; }
+
+/* ─── STATS ──────────────────────────────────────────────────────────────────── */
+.stats-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(130px, 1fr));
+  gap: 12px;
+}
+
+.stat-card {
+  background: white;
+  border: 2px solid #f8bbd0;
+  border-radius: 12px;
+  padding: 14px 10px;
+  text-align: center;
+}
+
+.stat-num   { font-size: 22px; font-weight: 600; color: #ac3f88; }
+.stat-label { font-size: 12px; color: #888; margin-top: 4px; }
+
+.stats-section { margin-top: 20px; }
+.stats-section h3 { margin: 0 0 8px; color: #ac3f88; font-size: 15px; }
+.stats-section ul { padding-left: 18px; margin: 0; }
+.stats-section li { font-size: 13px; color: #444; margin: 4px 0; }
+
+.status-badge {
+  display: inline-block;
+  font-size: 11px;
+  padding: 1px 7px;
+  border-radius: 8px;
+  font-weight: 500;
+}
+
+.status-badge.tbr      { background: #e3f2fd; color: #1565c0; }
+.status-badge.reading  { background: #fff8e1; color: #f57f17; }
+.status-badge.finished { background: #e8f5e9; color: #2e7d32; }
+
+/* ─── MISC ───────────────────────────────────────────────────────────────────── */
+.empty { color: #aaa; font-style: italic; font-size: 14px; }
